@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public class FollowCamera : MonoBehaviour
+namespace WarRoad.Core
 {
-    [SerializeField] private Transform _target;
-
-    void LateUpdate()
+    public class FollowCamera : MonoBehaviour
     {
-        transform.position = _target.position;
+        [SerializeField] private Transform _target;
+
+        void LateUpdate()
+        {
+            transform.position = _target.position;
+        }
     }
 }
