@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace WarRoad.Combat
+{
+    public class Health : MonoBehaviour
+    {
+        [SerializeField] private float _health = 100f;
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void TakeDamage(float damage)
+        {
+            _health = Mathf.Max(_health - damage, 0); // so that it does not go below 0
+            print(_health);
+        }
+    }
+}

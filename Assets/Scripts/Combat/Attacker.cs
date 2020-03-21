@@ -8,6 +8,10 @@ namespace WarRoad.Combat
     public class Attacker : MonoBehaviour, IAction
     {
         [SerializeField] float _attackRange = 2f;
+        [SerializeField] private float _timeBetweenAttacks = 1f;
+        [SerializeField] private float _damage = 5f;
+
+        private float _timeSinceLastAttack = 0;
 
         private Transform _target;
         private CharacterMovementHandler _characterMovementHandler;
@@ -17,6 +21,8 @@ namespace WarRoad.Combat
         }
         void Update()
         {
+            _timeSinceLastAttack += Time.deltaTime;
+
             if (_target == null)
             {
                 return;
@@ -24,16 +30,37 @@ namespace WarRoad.Combat
 
             if (IsInRange() == true)
             {
-                Debug.Log("attacking");
+                // attack
                 _characterMovementHandler
                     .Cancel();
+                TriggerAttackBehavior();
             }
             else
             {
-                Debug.Log("moving to target");
+                // move to target
                 _characterMovementHandler
                    .MoveTo(_target.position);
             }
+        }
+
+        private void TriggerAttackBehavior()
+        {
+            AttackIfCooledDown();
+
+        }
+
+        private void AttackIfCooledDown()
+        {
+            if (_timeSinceLastAttack >= _timeBetweenAttacks)
+            {
+                // The animation is calling the Hit() method
+                GetComponent<Animator>().SetTrigger("attack");
+                _timeSinceLastAttack = 0;
+            }
+        }
+        void Hit()
+        {
+            _target.GetComponent<Health>().TakeDamage(_damage);
         }
 
         private bool IsInRange()
