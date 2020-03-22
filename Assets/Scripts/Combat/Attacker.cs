@@ -13,7 +13,7 @@ namespace WarRoad.Combat
 
         private float _timeSinceLastAttack = 0;
 
-        private Transform _target;
+        private Health _target;
         private CharacterMovementHandler _characterMovementHandler;
         void Start()
         {
@@ -24,6 +24,10 @@ namespace WarRoad.Combat
             _timeSinceLastAttack += Time.deltaTime;
 
             if (_target == null)
+            {
+                return;
+            }
+            if (_target.IsDead)
             {
                 return;
             }
@@ -39,44 +43,70 @@ namespace WarRoad.Combat
             {
                 // move to target
                 _characterMovementHandler
-                   .MoveTo(_target.position);
+                   .MoveTo(_target.transform.position);
             }
         }
 
         private void TriggerAttackBehavior()
         {
-            AttackIfCooledDown();
+            transform.LookAt(_target.transform);
+            bool canAttack = _timeSinceLastAttack >= _timeBetweenAttacks;
 
-        }
-
-        private void AttackIfCooledDown()
-        {
-            if (_timeSinceLastAttack >= _timeBetweenAttacks)
+            if (canAttack)
             {
-                // The animation is calling the Hit() method
-                GetComponent<Animator>().SetTrigger("attack");
+                StartAttackAnimation();
                 _timeSinceLastAttack = 0;
             }
         }
-        void Hit()
+
+        public bool CanAttackTarget(AttackableTarget target)
         {
-            _target.GetComponent<Health>().TakeDamage(_damage);
+            if (target == null)
+            {
+                return false;
+            }
+            Health targetHealth = target.GetComponent<Health>();
+            if (targetHealth == null)
+            {
+                return false;
+            }
+            return !targetHealth.IsDead;
         }
 
         private bool IsInRange()
         {
-            return Vector3.Distance(_target.position, transform.position) < _attackRange;
+            return Vector3.Distance(_target.transform.position, transform.position) < _attackRange;
         }
 
         public void Attack(AttackableTarget target)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            _target = target.transform;
+            _target = target.GetComponent<Health>();
         }
 
         public void Cancel()
         {
+            StopAttackAnimation();
             _target = null;
+        }
+        private void StartAttackAnimation()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");
+        }
+        private void StopAttackAnimation()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        // Called by the attack animation
+        void Hit()
+        {
+            if (_target != null)
+            {
+                _target.TakeDamage(_damage);
+            }
         }
     }
 }

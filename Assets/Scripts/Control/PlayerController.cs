@@ -28,7 +28,7 @@ namespace WarRoad.Control
             {
                 AttackableTarget target = hit.transform.GetComponent<AttackableTarget>();
 
-                if (target != null)
+                if (GetComponent<Attacker>().CanAttackTarget(target) == true) // ignore dead targets
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
