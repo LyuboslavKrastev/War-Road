@@ -11,7 +11,7 @@ namespace WarRoad.Combat
         [SerializeField] private float _timeBetweenAttacks = 1f;
         [SerializeField] private float _damage = 5f;
 
-        private float _timeSinceLastAttack = 0;
+        private float _timeSinceLastAttack = Mathf.Infinity;
 
         private Health _target;
         private CharacterMovementHandler _characterMovementHandler;
@@ -59,7 +59,7 @@ namespace WarRoad.Combat
             }
         }
 
-        public bool CanAttackTarget(AttackableTarget target)
+        public bool CanAttackTarget(GameObject target)
         {
             if (target == null)
             {
@@ -78,7 +78,7 @@ namespace WarRoad.Combat
             return Vector3.Distance(_target.transform.position, transform.position) < _attackRange;
         }
 
-        public void Attack(AttackableTarget target)
+        public void Attack(GameObject target)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             _target = target.GetComponent<Health>();

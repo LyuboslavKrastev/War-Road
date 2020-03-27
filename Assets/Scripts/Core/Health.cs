@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WarRoad.Combat
+namespace WarRoad.Core
 {
     public class Health : MonoBehaviour
     {
@@ -11,10 +11,6 @@ namespace WarRoad.Combat
         private bool _isDead = false;
 
         public bool IsDead { get { return _isDead; } }
-        void Start()
-        {
-
-        }
 
         public void TakeDamage(float damage)
         {
@@ -32,6 +28,9 @@ namespace WarRoad.Combat
             {
                 _isDead = true;
                 GetComponent<Animator>().SetTrigger("die");
+
+                // Cancel the currently running action on death
+                GetComponent<ActionScheduler>().CancelCurrentAction();
             }
         }
     }

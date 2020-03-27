@@ -1,19 +1,31 @@
 ﻿using System;
 using UnityEngine;
 using WarRoad.Combat;
+using WarRoad.Core;
 using WarRoad.Movement;
 
 namespace WarRoad.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        private Health _health;
+
+        void Start()
+        {
+            _health = GetComponent<Health>();
+        }
+
         void Update()
         {
-            if (InteractWithCombat())
+            if (_health.IsDead)
             {
                 return;
             }
-            if (InteractWithMovement())
+            if (InteractWithCombat()) // attack
+            {
+                return;
+            }
+            if (InteractWithMovement()) // move
             {
                 return;
             }
@@ -28,11 +40,16 @@ namespace WarRoad.Control
             {
                 AttackableTarget target = hit.transform.GetComponent<AttackableTarget>();
 
-                if (GetComponent<Attacker>().CanAttackTarget(target) == true) // ignore dead targets
+                if (target == null)
+                {
+                    continue;
+                }
+
+                if (GetComponent<Attacker>().CanAttackTarget(target.gameObject) == true) // ignore dead targets
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        GetComponent<Attacker>().Attack(target);
+                        GetComponent<Attacker>().Attack(target.gameObject);
                     }
                     return true;
                 }

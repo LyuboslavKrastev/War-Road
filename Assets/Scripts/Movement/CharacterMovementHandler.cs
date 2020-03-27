@@ -8,13 +8,19 @@ namespace WarRoad.Movement
     public class CharacterMovementHandler : MonoBehaviour, IAction
     {
         private NavMeshAgent _navMeshAgent;
+        private Health _health;
 
         void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _health = GetComponent<Health>();
         }
         void Update()
         {
+            if (_health.IsDead)
+            {
+                _navMeshAgent.enabled = false;
+            }
             UpdateAnimator();
         }
 
