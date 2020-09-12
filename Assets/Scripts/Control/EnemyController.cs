@@ -12,6 +12,9 @@ namespace WarRoad.Control
         [SerializeField] private float _lingerTime = 3f;
         [SerializeField] private PatrolPath _patrolPath;
         [SerializeField] private float _waypointTolerance = 1f;
+
+        [Range(0, 1)]
+        [SerializeField] private float _partrolSpeedFraction = 0.4f;
        
         [SerializeField] private float _waypointLingerTime = 2f;
 
@@ -39,6 +42,7 @@ namespace WarRoad.Control
             _initialPosition = transform.position;
             _mover = GetComponent<CharacterMovementHandler>();
         }
+
         void Update()
         {
             if (_health.IsDead)
@@ -88,7 +92,7 @@ namespace WarRoad.Control
             }
             if (_timeSinceReachedWaypoint > _waypointLingerTime)
             {
-                _mover.StartMoveAction(nextPosition);
+                _mover.StartMoveAction(nextPosition, _partrolSpeedFraction);
             }
         }
 

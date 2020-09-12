@@ -9,6 +9,7 @@ namespace WarRoad.Movement
     {
         private NavMeshAgent _navMeshAgent;
         private Health _health;
+        [SerializeField] private float _maxSpeed = 6f;
 
         void Start()
         {
@@ -24,15 +25,16 @@ namespace WarRoad.Movement
             UpdateAnimator();
         }
 
-        public void StartMoveAction(Vector3 point)
+        public void StartMoveAction(Vector3 point, float speedFraction)
         {
-            GetComponent<ActionScheduler>().StartAction(this);
-            MoveTo(point);
+            this.GetComponent<ActionScheduler>().StartAction(this);
+            this.MoveTo(point, speedFraction);
         }
 
-        public void MoveTo(Vector3 point)
+        public void MoveTo(Vector3 point, float speedFraction)
         {
             _navMeshAgent.isStopped = false;
+            _navMeshAgent.speed = _maxSpeed * Mathf.Clamp01(speedFraction);
             _navMeshAgent.destination = point;
         }
 

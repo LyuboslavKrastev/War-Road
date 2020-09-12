@@ -66,7 +66,7 @@ namespace WarRoad.Control
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<CharacterMovementHandler>().StartMoveAction(hitInfo.point);
+                    GetComponent<CharacterMovementHandler>().StartMoveAction(hitInfo.point, 1f);
                 }
                 return true;
             }

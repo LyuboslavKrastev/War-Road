@@ -42,8 +42,7 @@ namespace WarRoad.Combat
             else
             {
                 // move to target
-                _characterMovementHandler
-                   .MoveTo(_target.transform.position);
+                _characterMovementHandler.MoveTo(_target.transform.position, 1f);
             }
         }
 

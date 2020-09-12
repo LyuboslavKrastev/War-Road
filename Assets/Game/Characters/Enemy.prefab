@@ -27,6 +27,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chaseDistance: 5
+  _lingerTime: 3
+  _patrolPath: {fileID: 0}
+  _waypointTolerance: 1
+  _waypointLingerTime: 2
 --- !u!114 &3292798119266851336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 2892094748319504831, guid: a17940f0e87ade44283d3b1d1e1a8bea,
         type: 3}
       propertyPath: _health
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3085184587842798260, guid: a17940f0e87ade44283d3b1d1e1a8bea,
         type: 3}
@@ -120,6 +124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468233699240214081, guid: a17940f0e87ade44283d3b1d1e1a8bea,
+        type: 3}
+      propertyPath: _damage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3366735224154188882, guid: a17940f0e87ade44283d3b1d1e1a8bea, type: 3}
