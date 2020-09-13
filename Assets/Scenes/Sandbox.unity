@@ -2452,81 +2452,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.026176924
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99965733
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053624, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053625, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053625, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_Depth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053625, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053625, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: orthographic size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558273011001053625, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: m_FOVAxisMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8558273011469650752, guid: 8d2914bbf632a4e4c98794084b3b9d80,
         type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 1303759440}
-    - target: {fileID: 8558273011469650752, guid: 8d2914bbf632a4e4c98794084b3b9d80,
-        type: 3}
-      propertyPath: speed
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8558273011469650753, guid: 8d2914bbf632a4e4c98794084b3b9d80,
         type: 3}
       propertyPath: m_Name
