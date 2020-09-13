@@ -9,7 +9,7 @@ namespace WarRoad.Movement
     {
         private NavMeshAgent _navMeshAgent;
         private Health _health;
-        [SerializeField] private float _maxSpeed = 6f;
+        [SerializeField] private float _maxSpeed = 10f;
 
         void Start()
         {
