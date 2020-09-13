@@ -29,7 +29,6 @@ namespace WarRoad.Control
             {
                 return;
             }
-            Debug.Log("nothing to do");
         }
 
         private bool InteractWithCombat()
